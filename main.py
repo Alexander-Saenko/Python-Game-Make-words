@@ -3,7 +3,6 @@ from classes.player import Player
 
 
 def main():
-	game_is_on = True
 	main_word = load_random_word()
 
 	word = main_word.word
@@ -19,23 +18,20 @@ def main():
 	print('Чтобы закончить игру, угадайте все слова и напишите "stop".')
 	print('Поехали, ваше первое слово?')
 
-	answer_counter = 1
+	answer_counter = 0
 
-	while game_is_on:
+	while answer_counter != wordcount:
 		print("Введите слово:")
 		user_input = input()
 
-		if answer_counter == wordcount:
-			game_is_on = False
+		if user_input == 'stop':
+			break
 
 		elif len(user_input) < 3:
 			print('Слишком короткое слово.\n')
 
 		elif this_player.has_uses(user_input):
 			print('Уже использовано.\n')
-
-		elif user_input == 'stop':
-			game_is_on = False
 
 		elif main_word.has_subword(user_input):
 			print("Слово есть.\n")
